@@ -1,6 +1,6 @@
-# frontend-admin-boilerplate
+# vue-console-boilerplate
 
-中后台集成解决方案
+基于 vuejs 和 element-ui 中后台集成解决方案
 
 **功能点**
 
@@ -43,4 +43,3 @@ npm run build
 ``` bash
 npm run lint
 ```
-# vue-console-boilerplate
