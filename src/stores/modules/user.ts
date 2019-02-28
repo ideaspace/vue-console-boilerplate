@@ -13,7 +13,6 @@ const state: UserVO = {
 
 const actions = {
   async createUserData({commit, state}: any) {
-    // 1. Check if we already have the user as a current user.
     if (state.userAccount) {
       return Promise.resolve(state);
     }
