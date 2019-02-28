@@ -26,7 +26,11 @@ class Bootstrap {
 
 
     this.router.beforeEach(async (to: Route, from: Route, next: any) => {
-      if (
+      if (to.name === 'login') {
+        this.stores.dispatch('user/deleteUserData')
+        this.stores.dispatch('menu/deleteMenuData')
+        next();
+      } else if (
         this.stores.state.menu &&
         (
           this.stores.state.menu.menuTree === undefined ||
