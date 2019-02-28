@@ -56,7 +56,7 @@ export default class LoginView extends Vue {
 <style lang="scss" scoped>
 .user-login {
   width: 400px;
-  position: relative;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
