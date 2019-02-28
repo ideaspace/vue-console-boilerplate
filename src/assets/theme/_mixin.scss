@@ -1,0 +1,10 @@
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin square($value) {
+  height: #{$value}px;
+  width: #{$value}px;
+}
