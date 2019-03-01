@@ -38,7 +38,7 @@ import {postLogout} from '@/apis/auth';
 
 @Component
 export default class HeaderWrapper extends Vue {
-  public title = require('./../../../package.json').title;
+  public title = require('./../../app.config').title;
   public get username() {
     return this.$store.state.user.username;
   }

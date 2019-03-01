@@ -26,9 +26,14 @@ class Bootstrap {
 
 
     this.router.beforeEach(async (to: Route, from: Route, next: any) => {
+      if (to.fullPath === '/') {
+        return next({
+          path: !!this.stores.state.user.userAccount ? '/dashboard' : '/auth/login'
+        });
+      }
       if (to.name === 'login') {
-        this.stores.dispatch('user/deleteUserData')
-        this.stores.dispatch('menu/deleteMenuData')
+        this.stores.dispatch('menu/deleteMenuData');
+        this.stores.dispatch('user/deleteUserData');
         next();
       } else if (
         this.stores.state.menu &&
@@ -46,7 +51,7 @@ class Bootstrap {
     });
 
     this.router.afterEach((to: Route, from: Route) => {
-      // document.title = `云桌面运营管理-${to.meta.title || ''}`;
+      document.title = `${require('./app.config').title}-${to.meta.title || ''}`;
     });
 
     // 重置 Element-Ui 部分组件的样式

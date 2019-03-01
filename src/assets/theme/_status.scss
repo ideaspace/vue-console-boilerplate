@@ -1,20 +1,71 @@
+@mixin sexy-border($color) {
+  border: {
+    color: $color;
+  }
+}
+[class^='is-status--dot'] {
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  margin-right: $base-ratio-px / 2;
+  margin-top: -1px;
+}
 .is-status {
-  &--firing {
-    color: $error-color;
-  }
   &--dot-critical,
-  &--dot-normal {
-    display: inline-block;
-    height: 6px;
-    width: 6px;
-    border-radius: 50%;
-    margin-right: $base-ratio-px;
-    margin-top: -1px;
-  }
-  &--dot-critical {
+  &--dot-error {
     background-color: $error-color;
+  }
+  &--dot-warning,
+  &--dot-pending {
+    background-color: $warning-color;
+  }
+  &--dot-disable {
+    background-color: $caption-color;
   }
   &--dot-normal {
     background-color: $success-color;
+  }
+  &--dot-info {
+    background-color: $primary-color;
+  }
+  &--dot-processing {
+    position: relative;
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      animation: statusProcessing 1.2s ease-in-out infinite;
+      content: "";
+    }
+    &.is-status--dot-warning {
+      background-color: $warning-color;
+      &:after {
+        @include sexy-border($warning-color)
+      }
+    }
+    &.is-status--dot-firing,
+    &.is-status--dot-error {
+      background-color: $error-color;
+      &:after {
+        @include sexy-border($error-color)
+      }
+    }
+    &.is-status--dot-normal {
+      background-color: $success-color;
+      &:after {
+        @include sexy-border($success-color)
+      }
+    }
+    &.is-status--dot-info {
+      background-color: $primary-color;
+      &:after {
+        @include sexy-border($primary-color)
+      }
+    }
   }
 }

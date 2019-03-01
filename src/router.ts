@@ -8,7 +8,9 @@ const requireRouter = require.context('@/views', true, /\.router\.ts$/);
 const routerAuth: RouteConfig = {
   path: '/auth',
   name: 'auth',
-  redirect: '/auth/login',
+  redirect: {
+    name: 'login'
+  },
   component: () => import('@/components/view/AuthView.vue'),
   children: [],
 };
@@ -17,7 +19,6 @@ const routerAuth: RouteConfig = {
 const routerPage: RouteConfig = {
   path: '/',
   name: 'page',
-  redirect: '/dashboard',
   component: () => import('@/components/view/PageView.vue'),
   children: [],
 };
