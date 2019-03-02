@@ -20,10 +20,10 @@ to: "src/views/<%= name.includes('/') ? h.inflection.dasherize(name.slice(0, nam
   })
   export default class <%= compName %>Dialog extends Vue {
     public dialogVisible: boolean = true;
-    onConfirm () {
+    public onConfirm () {
       this.onClose('confirm');
     }
-    onClose (type = 'dismiss') {
+    public onClose (type = 'dismiss') {
       this.dialogVisible = false;
       this.$emit('on-close', {
         name: '',
