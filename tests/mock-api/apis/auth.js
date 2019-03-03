@@ -8,10 +8,10 @@
 * https://stormpath.com/blog/where-to-store-your-jwts-cookies-vs-html5-web-storage
 * */
 
-const Users = require('../daos/users')
-const jwt = require('jsonwebtoken')
-const omit = require('lodash/omit')
-const pkg = require('./../../../package')
+const Users = require('../daos/users');
+const jwt = require('jsonwebtoken');
+const omit = require('lodash/omit');
+const pkg = require('./../../../package');
 
 module.exports = (app) => {
   // Log in a user with a username and password

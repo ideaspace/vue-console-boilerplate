@@ -1,10 +1,10 @@
 const List = require('../daos/list');
-const verifyToken = require('./../utils/verifyToken')
+const verifyToken = require('./../utils/verifyToken');
 module.exports = (app) => {
   app.get('/api/list', (request, response) => {
-    const token = verifyToken(request.cookies.token)
+    const token = verifyToken(request.cookies.token);
     if (!token) {
-      response.status(200).json({code: 401})
+      response.status(200).json({code: 401});
     } else {
       const tableList = List.findAll();
       response.json({
