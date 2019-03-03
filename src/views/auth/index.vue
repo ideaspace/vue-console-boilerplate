@@ -5,15 +5,15 @@
         <h3>登录</h3>
       </div>
       <div class="user-login--cont-form">
-        <el-form>
-          <el-form-item>
+        <el-form :model="form" ref="form" :rules="rules">
+          <el-form-item prop="userAccount">
             <el-input size="big" v-model="form.userAccount"></el-input>
           </el-form-item>
-          <el-form-item>
+          <el-form-item prop="password">
             <el-input size="big" type="password" v-model="form.password"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button size="big" type="primary" :loading="loading" @click="onAction">登录</el-button>
+            <el-button size="big" type="primary" :loading="loading" @click="onSignIn">登录</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -36,6 +36,11 @@ export default class LoginView extends Vue {
     password: '123456',
   };
 
+  public rules = {
+    userAccount: [{ required: true, trigger: 'blur', message: '用户名不能为空' }],
+    password: [{ required: true, trigger: 'blur', message: '密码不能为空' }]
+  };
+
   public async onAction() {
     this.loading = true;
     try {
@@ -46,10 +51,18 @@ export default class LoginView extends Vue {
         });
       }
     } catch (e) {
-      console.log(e);
     } finally {
       this.loading = false;
     }
+  }
+
+  public onSignIn() {
+    // @ts-ignore
+    this.$refs.form.validate(valid => {
+      if (valid) {
+        this.onAction()
+      }
+    })
   }
 }
 </script>
