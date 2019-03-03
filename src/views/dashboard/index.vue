@@ -1,5 +1,5 @@
 <template>
-  <view-container :show-head="false">g
+  <view-container :show-head="false">
   </view-container>
 </template>
 <script lang="ts">
