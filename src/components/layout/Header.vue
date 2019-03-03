@@ -61,7 +61,6 @@ export default class HeaderWrapper extends Vue {
         location.href = '/#/auth/login';
       }
     } catch (e) {
-      new Error(e)
     }
   }
 }
