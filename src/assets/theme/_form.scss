@@ -1,8 +1,7 @@
-.el-form--inline {
-  .el-form-item {
-    &__content {
-      font-size: 0;
-    }
+.el-form {
+  & + .el-table {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 .el-form-item {

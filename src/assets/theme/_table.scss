@@ -34,6 +34,9 @@
       margin-right: $base-ratio-px / 2;
       vertical-align: $base-ratio-px / -4;
     }
+    i[class^="el-icon-"] {
+      margin-right: $base-ratio-px / 2;
+    }
     span {
       vertical-align: middle;
     }
