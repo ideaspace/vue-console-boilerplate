@@ -1,6 +1,6 @@
 <template>
   <div class="view-container">
-    <div class="view-head">
+    <div class="view-head" v-if="showHead">
       <div class="view-head--cont">
         <!--<div class="view-head&#45;&#45;breadcrumb">-->
         <!--<el-breadcrumb separator="/">-->
@@ -42,6 +42,11 @@
 
     @Getter('breadcrumb/trace')
     public breadcrumb;
+
+    @Prop({
+      default: () => true,
+    })
+    private showHead: boolean;
 
     @Prop({
       default: () => '',
