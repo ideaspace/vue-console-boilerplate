@@ -45,11 +45,17 @@
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
 
+interface FormVO {
+  password?: '';
+  newPassword?: '';
+  checkPassword?: '';
+}
+
 @Component({
   name: 'UserView',
 })
 export default class UserView extends Vue {
-  public changePwdForm: object = {
+  public changePwdForm: FormVO = {
     password: '',
     newPassword: '',
     checkPassword: '',
@@ -58,6 +64,7 @@ export default class UserView extends Vue {
   public rules = {
     password: [
       {
+        // @ts-ignore
         validator: (rule, value, callback) => {
           if (!value) {
             callback(new Error('请输入密码'));
@@ -78,11 +85,13 @@ export default class UserView extends Vue {
         type: 'string',
       },
       {
+        // @ts-ignore
         validator: (rule, value, callback) => {
           if (value === '') {
             callback(new Error('请输入密码'));
           } else {
             if (this.changePwdForm.checkPassword !== '') {
+              // @ts-ignore
               this.$refs.changePwdForm.validateField('checkPassword');
             }
             callback();
@@ -101,6 +110,7 @@ export default class UserView extends Vue {
         type: 'string',
       },
       {
+        // @ts-ignore
         validator: (rule, value, callback) => {
           if (!value) {
             callback(new Error('请再次输入密码'));
