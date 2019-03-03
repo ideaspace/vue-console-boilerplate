@@ -17,7 +17,7 @@ const routerAuth: RouteConfig = {
 
 
 const routerPage: RouteConfig = {
-  path: '/',
+  path: '',
   name: 'page',
   component: () => import('@/components/view/PageView.vue'),
   children: [],

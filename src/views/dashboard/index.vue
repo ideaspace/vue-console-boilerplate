@@ -1,6 +1,5 @@
 <template>
-  <view-container>
-    <div>111</div>
+  <view-container :show-head="false">g
   </view-container>
 </template>
 <script lang="ts">
