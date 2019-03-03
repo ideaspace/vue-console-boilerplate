@@ -79,7 +79,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   transition: all .3s ease;
-  background-color: $window-bg-color;
+  background-color: $white-color;
   &.is-narrow {
     left: $aside-menu-width;
   }
