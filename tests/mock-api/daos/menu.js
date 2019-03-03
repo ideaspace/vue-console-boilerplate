@@ -30,7 +30,7 @@ module.exports = {
           menuIndex: 1,
           menuIcon: '',
           parMenuId: 102,
-          urlAddr: 'data-center'
+          urlAddr: 'form-basic'
         },
         {
           hasChildren: false,
@@ -41,7 +41,7 @@ module.exports = {
           menuIndex: 3,
           menuIcon: '',
           parMenuId: 102,
-          urlAddr: 'openstack-cluster'
+          urlAddr: 'form-advance'
         }
       ]
     },
