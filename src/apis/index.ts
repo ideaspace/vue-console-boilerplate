@@ -24,6 +24,9 @@ http.interceptors.response.use(
             },
           });
           break;
+        case 403:
+          Message.error(response.data.msg);
+          break;
       }
     }
     return response;
