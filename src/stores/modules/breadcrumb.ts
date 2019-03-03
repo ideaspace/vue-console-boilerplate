@@ -7,7 +7,7 @@ interface BreadcrumbVO {
   routeParent: any;
 }
 
-interface CacheVo {
+interface CachedVO {
   [key: string]: any;
 }
 
@@ -20,16 +20,12 @@ const actions = {
 };
 
 const mutations = {
-  [types.ROUTE_DATA_CREATE](state: CacheVo, data: BreadcrumbVO) {
-    if (!state[data.routeName]) {
-    }
-    if (data.routeParent) {
-    }
+  [types.ROUTE_DATA_CREATE](state: CachedVO, data: BreadcrumbVO) {
   },
 };
 
 const getters = {
-  trace: (state: CacheVo) => state,
+  trace: (state: CachedVO) => state,
 };
 
 export default {
