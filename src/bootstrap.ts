@@ -28,7 +28,7 @@ class Bootstrap {
     this.router.beforeEach(async (to: Route, from: Route, next: any) => {
       if (to.fullPath === '/') {
         return next({
-          path: !!this.stores.state.user.userAccount ? '/dashboard' : '/auth/login'
+          path: !!this.stores.state.user.userAccount ? '/dashboard' : '/auth/login',
         });
       }
       if (to.name === 'login') {
