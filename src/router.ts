@@ -9,7 +9,7 @@ const routerAuth: RouteConfig = {
   path: '/auth',
   name: 'auth',
   redirect: {
-    name: 'login'
+    name: 'login',
   },
   component: () => import('@/components/view/AuthView.vue'),
   children: [],
