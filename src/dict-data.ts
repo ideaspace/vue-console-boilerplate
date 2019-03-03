@@ -4,3 +4,8 @@ export const enum ALERT_HISTORY_STATUS {
   CONFIRMED = 'CONFIRMED',
   RECOVERED = 'RECOVERED',
 }
+
+export const enum ALERT_LEVEL {
+  NORMAL = 'NORMAL',
+  CRITICAL = 'CRITICAL',
+}
