@@ -1,9 +1,10 @@
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/style.scss';
+import Element from 'element-ui';
 import {VueConstructor} from 'vue';
 import {Route} from 'vue-router';
-import Element from 'element-ui';
-import {Comps} from './components/index';
+import {Comps} from '@/components';
+import {Mixins} from '@/mixins';
 import router from './router';
 import stores from './store';
 
@@ -17,14 +18,21 @@ class Bootstrap {
   }
 
   public install(Vue: VueConstructor, options: any) {
-
+    // Todo
+    // allow user to use options to config the custom flow
+    
     for (const key in Comps) {
       if (Comps.hasOwnProperty(key)) {
         Vue.component(key, Comps[key]);
       }
     }
-
-
+    
+    for (const key in Mixins) {
+      if (Mixins.hasOwnProperty(key)) {
+        Vue.mixin(Mixins[key])
+      }
+    }
+    
     this.router.beforeEach(async (to: Route, from: Route, next: any) => {
       if (to.fullPath === '/') {
         return next({
@@ -75,6 +83,7 @@ class Bootstrap {
     Element.TableColumn.props.showOverflowTooltip = {type: Boolean, default: true};
     // @ts-ignore
     Element.Pagination.props.background = {type: Boolean, default: true};
+    // @ts-ignore
     Element.MessageBox.setDefaults({type: 'warning'});
     Vue.use(Element, {size: 'small'});
   }
