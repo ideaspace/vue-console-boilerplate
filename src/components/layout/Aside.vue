@@ -58,7 +58,7 @@
 <script lang="ts">
   import {Component, Watch, Vue} from 'vue-property-decorator';
   import {Getter} from 'vuex-class';
-
+  import {menu}
   @Component
   export default class AsideWrapper extends Vue {
 
@@ -69,7 +69,7 @@
     public isOpenLock: boolean = false;
 
     @Getter('menu/menuTree')
-    public menuList;
+    public menuList: any[];
 
     public onSelect({urlAddr}: any) {
       this.current = urlAddr;
@@ -109,27 +109,6 @@
 
     public onMenuClose() {
       this.openMenuKey = null;
-    }
-
-    public onTraverse(menu, current) {
-      if (menu.urlAddr.indexOf(current) > -1) {
-        this.isCurrent = menu.urlAddr;
-        return this.isCurrent;
-      }
-      let re = false;
-      menu.items &&
-      menu.items.every((m) => {
-        const r = this.onTraverse(m, current);
-        console.log(r);
-        if (r) {
-          re = true;
-          this.isCurrent = m.urlAddr;
-          return false;
-        }
-      });
-      if (re) {
-        return this.isCurrent;
-      }
     }
 
     @Watch('$route.name')
