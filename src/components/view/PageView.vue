@@ -1,9 +1,6 @@
 <template>
   <div
     class="wrap"
-    :class="{
-      'is-home': $route.name === 'dashboard'
-    }"
   >
     <header-wrapper></header-wrapper>
     <div
@@ -37,7 +34,7 @@
   export default class PageView extends Vue {
 
     @Getter('container/loading')
-    public loading;
+    public loading: boolean;
 
     private isCollapseMenu: boolean = true;
 
