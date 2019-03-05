@@ -46,6 +46,11 @@ export default class HeaderWrapper extends Vue {
     if (val === 'logout') {
       this.userLogout();
     }
+    if (val === 'changePwd') {
+      this.$router.push({
+        name: 'user-modify-password'
+      });
+    }
   }
   public async userLogout() {
     try {
