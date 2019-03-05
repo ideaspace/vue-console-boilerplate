@@ -58,9 +58,15 @@
     })
     private backUrl: string;
 
+    public get fromName() {
+      return this.$store.state.menu.fromName;
+    }
+
     public onBack() {
       this.$router.push({
-        name: this.backUrl,
+        name: !!this.backUrl ? this.backUrl : this.fromName,
+        params: this.$route.params,
+        query: this.$route.query
       });
     }
   }
