@@ -18,7 +18,6 @@
         @open="onMenuOpen"
         @close="onMenuClose"
         ref="menu"
-        :default-active="current"
       >
         <template v-for="menu of menuList">
           <el-menu-item
@@ -31,7 +30,7 @@
             </div>
             <span :data-url="menu.urlAddr" slot="title" class="item-title">{{menu.menuName}}</span>
           </el-menu-item>
-          <el-submenu v-else :index="menu.menuId + ''">
+          <el-submenu :data-idx="menu.menuId" v-else :index="menu.menuId + ''">
             <template slot="title">
               <div class="item-icon">
                 <svg-icon :name="menu.menuIcon"></svg-icon>
@@ -58,47 +57,78 @@
 <script lang="ts">
   import {Component, Watch, Vue} from 'vue-property-decorator';
   import {Getter} from 'vuex-class';
-  import {menu}
+
+  /**
+   * helper function to traverse the menuTree
+   * @param src
+   * @param target
+   * @param key
+   * @return parentMenuId
+   */
+  const traverse = (src, target, key?) => {
+    if (key) return key;
+    let menuKey = undefined;
+    Array.from(src).some(menu => {
+      if (menu.urlAddr === target) {
+        menuKey = menu.menuId;
+        return true;
+      }
+      menu.items &&
+      menu.items.length &&
+      menu.items.some(item => {
+        if (item.parMenuId === menu.menuId) {
+          if (item.urlAddr === target) {
+            menuKey = item.parMenuId;
+            return true;
+          }
+        }
+        traverse(item, target, menuKey);
+      });
+    });
+    return menuKey;
+  };
+
   @Component
   export default class AsideWrapper extends Vue {
-
-    public openMenuKey: any = null;
-    public current: string = 'dashboard';
-    public isCurrent: string = '';
-    public isCollapse: boolean = true;
-    public isOpenLock: boolean = false;
 
     @Getter('menu/menuTree')
     public menuList: any[];
 
-    public onSelect({urlAddr}: any) {
-      this.current = urlAddr;
+    @Watch('$route.name')
+    public onRouteChange(newVal) {
+      // @ts-ignore
+      this.$refs.menu.activeIndex = newVal;
+    }
+
+    public openMenuKey: number = undefined;
+    public isCollapse: boolean = true;
+
+    public isOpenLock: boolean = false;
+
+    public onSelect({urlAddr}: object) {
       this.$router.push({name: urlAddr});
     }
 
     public onToggleMenu() {
       this.isCollapse = !this.isCollapse;
       this.isOpenLock = !this.isCollapse;
-      if (this.openMenuKey) {
-        this.$refs.menu[this.isCollapse ? 'close' : 'open'](this.openMenuKey);
-      }
+      this.openMenuKey && this.$refs.menu[this.isCollapse ? 'close' : 'open'](this.openMenuKey);
       this.$emit('on-toggle', this.isCollapse);
     }
 
     public onMouseEnter() {
-      if (this.isOpenLock) { return; }
       if (this.openMenuKey) {
         // @ts-ignore
-        this.$refs.menu.open(this.openMenuKey);
+        this.$refs.menu.submenus[this.openMenuKey] &&
+        this.$refs.menu.openMenu(this.openMenuKey);
       }
       this.isCollapse = false;
     }
 
     public onMouseLeave() {
-      if (this.isOpenLock) { return; }
       if (this.openMenuKey) {
         // @ts-ignore
-        this.$refs.menu.close(this.openMenuKey);
+        this.$refs.menu.closeMenu(this.openMenuKey);
       }
       this.isCollapse = true;
     }
@@ -108,13 +138,13 @@
     }
 
     public onMenuClose() {
-      this.openMenuKey = null;
+      this.openMenuKey = undefined;
     }
 
-    @Watch('$route.name')
-    public onCurrentChange() {
+    public mounted() {
+      this.openMenuKey = traverse(this.menuList, this.$route.name)
       // @ts-ignore
-      this.$refs.menu.activeIndex = this.current;
+      this.$refs.menu.activeIndex = this.$route.name;
     }
   }
 </script>
@@ -248,7 +278,7 @@
       display: inline-block;
       height: 32px;
       width: 32px;
-      line-height: 34px;
+      line-height: 32px;
       border-radius: 100%;
       cursor: pointer;
       text-align: center;
