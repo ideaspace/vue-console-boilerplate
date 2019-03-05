@@ -1,6 +1,6 @@
 import * as types from '../mutation-types';
 
-interface ContainerVO {
+export interface ContainerVO {
   loading?: boolean;
 }
 
