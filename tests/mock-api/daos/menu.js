@@ -104,13 +104,36 @@ module.exports = {
           hasChildren: false,
           items: null,
           menuId: 141,
+          menuName: '403',
+          menuLevel: 2,
+          menuIndex: 1,
+          menuIcon: '',
+          parMenuId: 105,
+          urlAddr: 'error-403'
+        },
+        {
+          hasChildren: false,
+          items: null,
+          menuId: 142,
           menuName: '404',
           menuLevel: 2,
           menuIndex: 1,
           menuIcon: '',
           parMenuId: 105,
-          urlAddr: 'tenant-manage'
-        }]
+          urlAddr: 'error-404'
+        },
+        {
+          hasChildren: false,
+          items: null,
+          menuId: 143,
+          menuName: '500',
+          menuLevel: 2,
+          menuIndex: 1,
+          menuIcon: '',
+          parMenuId: 105,
+          urlAddr: 'error-500'
+        },
+      ]
     },
     {
       hasChildren: true,
