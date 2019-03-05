@@ -20,30 +20,37 @@ class Bootstrap {
   public install(Vue: VueConstructor, options: any) {
     // Todo
     // allow user to use options to config the custom flow
-    
+
     for (const key in Comps) {
       if (Comps.hasOwnProperty(key)) {
         Vue.component(key, Comps[key]);
       }
     }
-    
+
     for (const key in Mixins) {
       if (Mixins.hasOwnProperty(key)) {
         Vue.mixin(Mixins[key])
       }
     }
-    
+
     this.router.beforeEach(async (to: Route, from: Route, next: any) => {
+      // 404 拦截
+      if (to.matched.length === 0) {
+        return next('/error/404');
+      }
+      // 未登录拦截
       if (to.fullPath === '/') {
         return next({
           path: !!this.stores.state.user.userAccount ? '/dashboard' : '/auth/login',
         });
       }
+      // 登录页面拦截
       if (to.name === 'login') {
         this.stores.dispatch('menu/deleteMenuData');
         this.stores.dispatch('user/deleteUserData');
-        next();
-      } else if (
+        return next();
+      }
+      if (
         this.stores.state.menu &&
         (
           this.stores.state.menu.menuTree === undefined ||
@@ -54,6 +61,7 @@ class Bootstrap {
         this.stores.dispatch('menu/createMenuData', {toName: to.name, fromName: from.name});
         next();
       } else {
+        this.stores.dispatch('menu/createMenuData', {toName: to.name, fromName: from.name});
         next();
       }
     });
