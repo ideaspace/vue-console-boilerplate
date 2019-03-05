@@ -1,6 +1,6 @@
-# vue-console-boilerplate
+# frontend-admin-boilerplate
 
-基于 vuejs 和 element-ui 中后台集成解决方案
+中后台集成解决方案
 
 **功能点**
 
@@ -10,7 +10,8 @@
 - 模拟菜单数据和用户数据
 - 登录逻辑
 - 页面标题配置
-- 常用组件的展示
+- 常用组件展示
+- 常用页面展示
 - 包含子菜单的页面展示
 - 规范统一的设计与交互
 - 命令行创建目录文件
@@ -34,6 +35,9 @@ npm run new:dialog test/ab  => @/views/test/dialogs/Ab.vue
 npm run new:module test     => @/views/test/test.module.ts 
 npm run new:api test        => @/apis/test.ts
 ```
+
+**反向代理**
+
 
 **编译文件**
 ``` bash
