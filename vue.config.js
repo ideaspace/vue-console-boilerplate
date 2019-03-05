@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   configureWebpack: {
-    name: require('./package.json').title,
+    name: require('./src/app.config.ts').title,
   },
   chainWebpack: config => {
     config.module
