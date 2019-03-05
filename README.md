@@ -1,4 +1,4 @@
-# frontend-admin-boilerplate
+# vue-console-boilerplate
 
 中后台集成解决方案
 
