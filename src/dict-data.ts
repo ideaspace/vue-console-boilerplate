@@ -1,11 +1,11 @@
-export const enum ALERT_HISTORY_STATUS {
+export enum ALERT_HISTORY_STATUS {
   PENDING = 'PENDING',
   FIRING = 'FIRING',
   CONFIRMED = 'CONFIRMED',
   RECOVERED = 'RECOVERED',
 }
 
-export const enum ALERT_LEVEL {
+export enum ALERT_LEVEL {
   NORMAL = 'NORMAL',
   CRITICAL = 'CRITICAL',
 }
