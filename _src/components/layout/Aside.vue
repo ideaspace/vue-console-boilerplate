@@ -96,8 +96,7 @@
 
     @Watch('$route.name')
     public onRouteChange(newVal) {
-      // @ts-ignore
-      this.$refs.menu.activeIndex = newVal;
+      this.$refs.menu['activeIndex'] = newVal;
     }
 
     public openMenuKey: number = undefined;
@@ -118,17 +117,15 @@
 
     public onMouseEnter() {
       if (this.openMenuKey) {
-        // @ts-ignore
-        this.$refs.menu.submenus[this.openMenuKey] &&
-        this.$refs.menu.openMenu(this.openMenuKey);
+        this.$refs.menu['submenus'][this.openMenuKey] &&
+        this.$refs.menu['openMenu'](this.openMenuKey);
       }
       this.isCollapse = false;
     }
 
     public onMouseLeave() {
       if (this.openMenuKey) {
-        // @ts-ignore
-        this.$refs.menu.closeMenu(this.openMenuKey);
+        this.$refs.menu['closeMenu'](this.openMenuKey);
       }
       this.isCollapse = true;
     }
@@ -143,8 +140,7 @@
 
     public mounted() {
       this.openMenuKey = traverse(this.menuList, this.$route.name)
-      // @ts-ignore
-      this.$refs.menu.activeIndex = this.$route.name;
+      this.$refs.menu['activeIndex'] = this.$route.name;
     }
   }
 </script>
