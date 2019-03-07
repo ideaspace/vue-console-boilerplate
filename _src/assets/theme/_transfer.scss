@@ -10,7 +10,6 @@
       .el-checkbox__label {
         vertical-align: middle;
         color: $caption-color;
-
         span {
           color: $caption-color;
         }
@@ -51,10 +50,12 @@
   &__button {
     padding: $base-ratio-px;
     border-radius: $border-radius;
+
     &.is-disabled {
       border: 1px solid #d2d6da;
       background-color: $window-bg-color;
       color: #d2d6da;
+
       &:hover {
         border: 1px solid #d2d6da;
         background-color: $window-bg-color;
