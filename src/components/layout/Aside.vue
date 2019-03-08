@@ -55,29 +55,28 @@
 </template>
 
 <script lang="ts">
-  import {Component, Watch, Vue} from 'vue-property-decorator';
-  import {Getter} from 'vuex-class';
-  import {MenuVO} from '@/apis/menu';
+import {Component, Watch, Vue} from 'vue-property-decorator';
+import {Getter} from 'vuex-class';
+import {MenuVO} from '@/apis/menu';
 
-  /**
-   * helper function to traverse the menuTree
-   * @param src
-   * @param target
-   * @param key
-   * @return parentMenuId
-   */
-  const traverse = (src, target, key?) => {
-    if (key) {
-      return key;
+/**
+ * helper function to traverse the menuTree
+ * @param src
+ * @param target
+ * @param key
+ * @return parentMenuId
+ */
+const traverse = (src: MenuVO[], target: string, key?: number) => {
+  if (key) {
+    return key;
+  }
+  let menuKey: number;
+  Array.from(src).some((menu: MenuVO) => {
+    if (menu.urlAddr === target) {
+      menuKey = menu.menuId;
+      return true;
     }
-    let menuKey;
-    Array.from(src).some((menu: MenuVO) => {
-      if (menu.urlAddr === target) {
-        menuKey = menu.menuId;
-        return true;
-      }
-      menu.items &&
-      menu.items.length &&
+    if (menu.items && menu.items.length) {
       menu.items.some((item: MenuVO) => {
         if (item.parMenuId === menu.menuId) {
           if (item.urlAddr === target) {
@@ -85,75 +84,82 @@
             return true;
           }
         }
-        traverse(item, target, menuKey);
+        traverse([item], target, menuKey);
       });
-    });
-    return menuKey;
-  };
-
-  @Component
-  export default class AsideWrapper extends Vue {
-
-    @Getter('menu/menuTree')
-    public menuList: any[];
-
-    public openMenuKey: number = undefined;
-    public isCollapse: boolean = true;
-    public isOpenLock: boolean = false;
-
-    public onSelect({urlAddr}: object) {
-      this.$router.push({name: urlAddr});
     }
+  });
+  return menuKey;
+};
 
-    public onToggleMenu() {
-      this.isCollapse = !this.isCollapse;
-      this.isOpenLock = !this.isCollapse;
-      if (this.openMenuKey) {
-        // tslint:disable-next-line
-        this.$refs.menu[this.isCollapse ? 'closeMenu' : 'openMenu'](this.openMenuKey, !this.isCollapse && this.$route.name);
-      }
-      this.$emit('on-toggle', this.isCollapse);
-    }
+@Component
+export default class AsideWrapper extends Vue {
 
-    public onMouseEnter() {
-      if (this.isOpenLock) {
-        return;
-      }
-      if (this.openMenuKey) {
-        this.$refs.menu['submenus'][this.openMenuKey] &&
-        this.$refs.menu['openMenu'](this.openMenuKey, this.$route.name);
-      }
-      this.isCollapse = false;
-    }
+  @Getter('menu/menuTree')
+  public menuList: MenuVO[] = [];
 
-    public onMouseLeave() {
-      if (this.isOpenLock) {
-        return;
-      }
-      if (this.openMenuKey) {
-        this.$refs.menu['closeMenu'](this.openMenuKey);
-      }
-      this.isCollapse = true;
-    }
+  public openMenuKey: number | undefined;
+  public isCollapse: boolean = true;
+  public isOpenLock: boolean = false;
 
-    public onMenuOpen(key) {
-      this.openMenuKey = key;
-    }
-
-    public onMenuClose() {
-      this.openMenuKey = undefined;
-    }
-
-    public mounted() {
-      this.openMenuKey = traverse(this.menuList, this.$route.name);
-      this.$refs.menu['activeIndex'] = this.$route.name;
-    }
-
-    @Watch('$route.name')
-    public onRouteChange(newVal) {
-      this.$refs.menu['activeIndex'] = newVal;
-    }
+  public onSelect({urlAddr}: MenuVO) {
+    this.$router.push({name: urlAddr});
   }
+
+  public onToggleMenu() {
+    this.isCollapse = !this.isCollapse;
+    this.isOpenLock = !this.isCollapse;
+    if (this.openMenuKey) {
+      // @ts-ignore
+      this.$refs.menu[this.isCollapse ? 'closeMenu' : 'openMenu'](this.openMenuKey, !this.isCollapse && this.$route.name);
+    }
+    this.$emit('on-toggle', this.isCollapse);
+  }
+
+  public onMouseEnter() {
+    if (this.isOpenLock) {
+      return;
+    }
+    if (
+      this.openMenuKey &&
+      this.$refs.menu.submenus[this.openMenuKey] // ts:disable
+    ) {
+      // @ts-ignore
+      this.$refs.menu.openMenu(this.openMenuKey, this.$route.name);
+    }
+    this.isCollapse = false;
+  }
+
+  public onMouseLeave() {
+    if (this.isOpenLock) {
+      return;
+    }
+    if (this.openMenuKey) {
+      // @ts-ignore
+      this.$refs.menu.closeMenu(this.openMenuKey);
+    }
+    this.isCollapse = true;
+  }
+
+  public onMenuOpen(key: number) {
+    this.openMenuKey = key;
+  }
+
+  public onMenuClose() {
+    this.openMenuKey = undefined;
+  }
+
+  public mounted() {
+    this.openMenuKey = traverse(this.menuList, this.$route.name || '');
+    // @ts-ignore
+    this.$refs.menu.activeIndex = this.$route.meta.bind || this.$route.name;
+  }
+
+  @Watch('$route.name')
+  public onRouteChange(newVal: string) {
+    // @ts-ignore
+    this.$refs.menu.activeIndex = this.$route.meta.bind || newVal;
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

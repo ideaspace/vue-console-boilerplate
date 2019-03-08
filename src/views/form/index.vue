@@ -34,22 +34,22 @@
   </view-container>
 </template>
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
+import {Component, Vue} from 'vue-property-decorator';
 
-  @Component({
-    name: 'FormView'
-  })
-  export default class FormView extends Vue {
-    public form = {
-      tenantName: '',
-      tenantCode: '',
-      contactName: '',
-      contactPhone: '',
-      contactAddress: '',
-      contactEmail: '',
-      remark: ''
-    }
-  }
+@Component({
+  name: 'FormView',
+})
+export default class FormView extends Vue {
+  public form = {
+    tenantName: '',
+    tenantCode: '',
+    contactName: '',
+    contactPhone: '',
+    contactAddress: '',
+    contactEmail: '',
+    remark: '',
+  };
+}
 </script>
 
 <style lang="scss" scoped>

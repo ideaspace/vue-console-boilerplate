@@ -37,26 +37,19 @@
 
   @Component
   export default class ViewContainer extends Vue {
-    public get breadcrumbList() {
-    }
 
-    @Getter('breadcrumb/trace')
-    public breadcrumb;
+    @Prop(Boolean)
+    public showHead!: boolean;
 
     @Prop({
-      default: () => true,
+      default: '',
     })
-    private showHead: boolean;
+    public title!: string;
 
     @Prop({
-      default: () => '',
+      default: '',
     })
-    private title: string;
-
-    @Prop({
-      default: () => '',
-    })
-    private backUrl: string;
+    public backUrl!: string;
 
     public get fromName() {
       return this.$store.state.menu.fromName;

@@ -66,7 +66,7 @@ import HTTP_LIST, {ListVO} from '@/apis/list';
 export default class ListView extends Vue {
   public form = {
     dataCenter: '',
-    dataCluster: ''
+    dataCluster: '',
   };
   public loading: boolean = false;
   public alertList: ListVO[] = [];

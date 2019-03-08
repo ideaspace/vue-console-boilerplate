@@ -1,34 +1,34 @@
  import * as types from '../mutation-types';
 
-interface BreadcrumbVO {
+ interface BreadcrumbVO {
   routeName: string;
   routeText: string;
   menuTree: any;
   routeParent: any;
 }
 
-interface CachedVO {
+ interface CachedVO {
   [key: string]: any;
 }
 
-const state = {};
+ const state = {};
 
-const actions = {
+ const actions = {
   createRouteData({commit}: any, data: BreadcrumbVO) {
     commit(types.ROUTE_DATA_CREATE, data);
   },
 };
 
-const mutations = {
+ const mutations = {
   [types.ROUTE_DATA_CREATE](state: CachedVO, data: BreadcrumbVO) {
   },
 };
 
-const getters = {
+ const getters = {
   trace: (state: CachedVO) => state,
 };
 
-export default {
+ export default {
   namespaced: true,
   state,
   actions,

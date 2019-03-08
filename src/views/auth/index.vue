@@ -38,7 +38,7 @@ export default class LoginView extends Vue {
 
   public rules = {
     userAccount: [{ required: true, trigger: 'blur', message: '用户名不能为空' }],
-    password: [{ required: true, trigger: 'blur', message: '密码不能为空' }]
+    password: [{ required: true, trigger: 'blur', message: '密码不能为空' }],
   };
 
   public async onAction() {
@@ -58,11 +58,11 @@ export default class LoginView extends Vue {
 
   public onSignIn() {
     // @ts-ignore
-    this.$refs.form.validate(valid => {
+    this.$refs.form.validate((valid) => {
       if (valid) {
-        this.onAction()
+        this.onAction();
       }
-    })
+    });
   }
 }
 </script>

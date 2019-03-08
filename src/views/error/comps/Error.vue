@@ -11,20 +11,20 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-  @Component
-  export default class Error extends Vue {
-    @Prop()
-    private type!: string;
-    @Prop()
-    private message!: string;
-    private goHome(): void {
-      this.$router.push({
-        name: 'dashboard'
-      })
-    }
+@Component
+export default class Error extends Vue {
+  @Prop()
+  private type!: string;
+  @Prop()
+  private message!: string;
+  private goHome(): void {
+    this.$router.push({
+      name: 'dashboard',
+    });
   }
+}
 </script>
 
 <style scoped lang="scss">

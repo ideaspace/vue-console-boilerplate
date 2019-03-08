@@ -13,12 +13,14 @@ class CountedTo {
   private options: any;
   private startTime: number;
   private readonly countDown: boolean;
+  private callback: Function;
 
   constructor(settings: object) {
     this.options = Object.assign({}, CountedTo.defaultSettings, settings);
     this.currentValue = 0;
     this.startTime = 0;
     this.countDown = this.options.startValue > this.options.endValue;
+    this.callback = () => {}
   }
 
   public startTo(endValue: number, fn: () => {}) {
@@ -28,8 +30,6 @@ class CountedTo {
     this.callback = fn;
     return this;
   }
-
-  private callback(fn: any) {}
 
   private counting(currentTime: number) {
     if (!this.startTime) { this.startTime = currentTime; }
