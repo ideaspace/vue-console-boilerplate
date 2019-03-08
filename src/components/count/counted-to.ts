@@ -1,3 +1,4 @@
+/* tslint:disable */
 class CountedTo {
 
   private static defaultSettings = {

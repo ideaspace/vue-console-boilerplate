@@ -48,7 +48,7 @@ export default class HeaderWrapper extends Vue {
     }
     if (val === 'changePwd') {
       this.$router.push({
-        name: 'user-modify-password'
+        name: 'user-modify-password',
       });
     }
   }

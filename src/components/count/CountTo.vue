@@ -44,7 +44,7 @@ export default class CountTo extends Vue {
   }
 
   @Watch('endValue')
-  public onEndValueChange(value) {
+  public onEndValueChange(value: number) {
     this.counted.startTo(value, (val: number) => {
       this.countValue = val;
     });

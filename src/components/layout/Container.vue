@@ -66,7 +66,7 @@
       this.$router.push({
         name: !!this.backUrl ? this.backUrl : this.fromName,
         params: this.$route.params,
-        query: this.$route.query
+        query: this.$route.query,
       });
     }
   }

@@ -57,6 +57,7 @@
 <script lang="ts">
   import {Component, Watch, Vue} from 'vue-property-decorator';
   import {Getter} from 'vuex-class';
+  import {MenuVO} from '@/apis/menu';
 
   /**
    * helper function to traverse the menuTree
@@ -66,16 +67,18 @@
    * @return parentMenuId
    */
   const traverse = (src, target, key?) => {
-    if (key) return key;
-    let menuKey = undefined;
-    Array.from(src).some(menu => {
+    if (key) {
+      return key;
+    }
+    let menuKey;
+    Array.from(src).some((menu: MenuVO) => {
       if (menu.urlAddr === target) {
         menuKey = menu.menuId;
         return true;
       }
       menu.items &&
       menu.items.length &&
-      menu.items.some(item => {
+      menu.items.some((item: MenuVO) => {
         if (item.parMenuId === menu.menuId) {
           if (item.urlAddr === target) {
             menuKey = item.parMenuId;
@@ -94,14 +97,8 @@
     @Getter('menu/menuTree')
     public menuList: any[];
 
-    @Watch('$route.name')
-    public onRouteChange(newVal) {
-      this.$refs.menu['activeIndex'] = newVal;
-    }
-
     public openMenuKey: number = undefined;
     public isCollapse: boolean = true;
-
     public isOpenLock: boolean = false;
 
     public onSelect({urlAddr}: object) {
@@ -111,12 +108,17 @@
     public onToggleMenu() {
       this.isCollapse = !this.isCollapse;
       this.isOpenLock = !this.isCollapse;
-      this.openMenuKey && this.$refs.menu[this.isCollapse ? 'closeMenu' : 'openMenu'](this.openMenuKey, !this.isCollapse && this.$route.name);
+      if (this.openMenuKey) {
+        // tslint:disable-next-line
+        this.$refs.menu[this.isCollapse ? 'closeMenu' : 'openMenu'](this.openMenuKey, !this.isCollapse && this.$route.name);
+      }
       this.$emit('on-toggle', this.isCollapse);
     }
 
     public onMouseEnter() {
-      if (this.isOpenLock) return;
+      if (this.isOpenLock) {
+        return;
+      }
       if (this.openMenuKey) {
         this.$refs.menu['submenus'][this.openMenuKey] &&
         this.$refs.menu['openMenu'](this.openMenuKey, this.$route.name);
@@ -125,7 +127,9 @@
     }
 
     public onMouseLeave() {
-      if (this.isOpenLock) return;
+      if (this.isOpenLock) {
+        return;
+      }
       if (this.openMenuKey) {
         this.$refs.menu['closeMenu'](this.openMenuKey);
       }
@@ -141,8 +145,13 @@
     }
 
     public mounted() {
-      this.openMenuKey = traverse(this.menuList, this.$route.name)
+      this.openMenuKey = traverse(this.menuList, this.$route.name);
       this.$refs.menu['activeIndex'] = this.$route.name;
+    }
+
+    @Watch('$route.name')
+    public onRouteChange(newVal) {
+      this.$refs.menu['activeIndex'] = newVal;
     }
   }
 </script>

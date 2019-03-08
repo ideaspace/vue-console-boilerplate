@@ -6,7 +6,7 @@ import {Route} from 'vue-router';
 import {Comps} from '@/components';
 import {Mixins} from '@/mixins';
 import router from './router';
-import stores from './store';
+import store from './store';
 
 class Bootstrap {
   public router: any;
@@ -29,7 +29,7 @@ class Bootstrap {
 
     for (const key in Mixins) {
       if (Mixins.hasOwnProperty(key)) {
-        Vue.mixin(Mixins[key])
+        Vue.mixin(Mixins[key]);
       }
     }
 
@@ -97,4 +97,4 @@ class Bootstrap {
   }
 }
 
-export default new Bootstrap(router, stores);
+export default new Bootstrap(router, store);
