@@ -3,8 +3,7 @@ to: "src/views/<%= name.includes('/') ? h.inflection.dasherize(name.slice(0, nam
 ---
 <%
   const compName = h.changeCase.pascal(name.slice(name.indexOf('/') + 1))
-%>
-<template>
+%><template>
   <el-dialog title="" :visible="dialogVisible" @close="onClose">
     <div slot="footer" class="dialog-footer">
       <el-button @click="onClose">关闭</el-button>

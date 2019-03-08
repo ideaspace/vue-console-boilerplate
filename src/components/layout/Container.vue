@@ -38,8 +38,8 @@
   @Component
   export default class ViewContainer extends Vue {
 
-    @Prop(Boolean)
-    public showHead!: boolean;
+    @Prop({ type: Boolean, default: true })
+    public showHead!: boolean
 
     @Prop({
       default: '',
