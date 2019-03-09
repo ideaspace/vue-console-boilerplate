@@ -15,4 +15,7 @@
     top: $base-ratio-px * 2;
     right: $base-ratio-px * 2;
   }
+  &__body {
+    padding: $base-ratio-px * 2 $base-ratio-px * 3;
+  }
 }

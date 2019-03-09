@@ -19,6 +19,7 @@ export default class Error extends Vue {
   private type!: string;
   @Prop()
   private message!: string;
+
   private goHome(): void {
     this.$router.push({
       name: 'dashboard',
@@ -39,7 +40,7 @@ export default class Error extends Vue {
     align-items: center;
   }
   &-type {
-    height: $base-ratio-px * 60;
+    height: $base-ratio-px * 60 - 60;
     width: 100%;
     margin-top: $base-ratio-px * 3;
     background-repeat: no-repeat;

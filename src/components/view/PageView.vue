@@ -34,7 +34,7 @@
   export default class PageView extends Vue {
 
     @Getter('container/loading')
-    public loading: boolean = false;
+    public loading: boolean;
 
     private isCollapseMenu: boolean = true;
 
