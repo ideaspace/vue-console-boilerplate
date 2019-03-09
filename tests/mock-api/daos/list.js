@@ -3,4 +3,4 @@ module.exports = {
   findAll () {
     return this.all;
   }
-};value
+};
