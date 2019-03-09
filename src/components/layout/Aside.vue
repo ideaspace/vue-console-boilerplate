@@ -95,7 +95,7 @@ const traverse = (src: MenuVO[], target: string, key?: number) => {
 export default class AsideWrapper extends Vue {
 
   @Getter('menu/menuTree')
-  public menuList: MenuVO[] = [];
+  public menuList!: MenuVO[];
 
   public openMenuKey: number | undefined;
   public isCollapse: boolean = true;
