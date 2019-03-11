@@ -4,6 +4,11 @@
     margin-bottom: 0;
   }
 }
+.el-form--inline {
+  .el-form-item__content {
+    font-size: 0;
+  }
+}
 .el-form-item {
   .el-table {
     margin-top: 0;
@@ -17,16 +22,16 @@
       fill: #999;
     }
   }
-  .el-input-group__prepend {
+  .el-input-group--prepend {
     .el-input__inner {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
     }
   }
-  .el-input-group__append {
+  .el-input-group--append {
     .el-input__inner {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
     }
   }
   .el-input__inner {
