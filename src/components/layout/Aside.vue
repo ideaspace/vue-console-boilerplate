@@ -70,14 +70,14 @@ const traverse = (src: MenuVO[], target: string, key?: number) => {
   if (key) {
     return key;
   }
-  let menuKey: number;
-  Array.from(src).some((menu: MenuVO) => {
+  let menuKey: number = -1;
+  Array.from(src).some((menu: MenuVO): boolean => {
     if (menu.urlAddr === target) {
       menuKey = menu.menuId;
       return true;
     }
     if (menu.items && menu.items.length) {
-      menu.items.some((item: MenuVO) => {
+      menu.items.some((item: MenuVO): boolean => {
         if (item.parMenuId === menu.menuId) {
           if (item.urlAddr === target) {
             menuKey = item.parMenuId;
@@ -85,8 +85,10 @@ const traverse = (src: MenuVO[], target: string, key?: number) => {
           }
         }
         traverse([item], target, menuKey);
+        return false;
       });
     }
+    return false;
   });
   return menuKey;
 };
@@ -109,8 +111,9 @@ export default class AsideWrapper extends Vue {
     this.isCollapse = !this.isCollapse;
     this.isOpenLock = !this.isCollapse;
     if (this.openMenuKey) {
+      const type = this.isCollapse ? 'closeMenu' : 'openMenu';
       // @ts-ignore
-      this.$refs.menu[this.isCollapse ? 'closeMenu' : 'openMenu'](this.openMenuKey, !this.isCollapse && this.$route.name);
+      this.$refs.menu[type](this.openMenuKey, !this.isCollapse && this.$route.name);
     }
     this.$emit('on-toggle', this.isCollapse);
   }
@@ -121,6 +124,7 @@ export default class AsideWrapper extends Vue {
     }
     if (
       this.openMenuKey &&
+      // @ts-ignore
       this.$refs.menu.submenus[this.openMenuKey] // ts:disable
     ) {
       // @ts-ignore

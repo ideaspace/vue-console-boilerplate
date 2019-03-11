@@ -27,31 +27,31 @@
   </el-dialog>
 </template>
 <script lang="ts">
-  import {Component, Prop, Vue} from 'vue-property-decorator';
-  import {ListVO} from '@/apis/list';
-  import {ALERT_LEVEL_TEXT} from '@/dict-text';
+import {Component, Prop, Vue} from 'vue-property-decorator';
+import {ListVO} from '@/apis/list';
+import {ALERT_LEVEL_TEXT} from '@/dict-text';
 
-  @Component({
-    name: 'DetailDialog'
+@Component({
+  name: 'DetailDialog',
+})
+export default class DetailDialog extends Vue {
+  @Prop({
+    default: {},
   })
-  export default class DetailDialog extends Vue {
-    @Prop({
-      default: () => {}
-    })
-    public itemData!:ListVO;
+  public itemData!: ListVO;
 
-    public dialogVisible: boolean = true;
-    public ALERT_LEVEL_TEXT = ALERT_LEVEL_TEXT;
-    public onConfirm () {
-      this.onClose('confirm');
-    }
-    public onClose (type = 'dismiss') {
-      this.dialogVisible = false;
-      this.$emit('on-close', {
-        name: 'detail',
-        visible: this.dialogVisible,
-        type: type
-      })
-    }
+  public dialogVisible: boolean = true;
+  public ALERT_LEVEL_TEXT = ALERT_LEVEL_TEXT;
+  public onConfirm() {
+    this.onClose('confirm');
   }
+  public onClose(type = 'dismiss') {
+    this.dialogVisible = false;
+    this.$emit('on-close', {
+      name: 'detail',
+      visible: this.dialogVisible,
+      type,
+    });
+  }
+}
 </script>

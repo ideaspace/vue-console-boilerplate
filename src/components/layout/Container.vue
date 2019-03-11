@@ -32,37 +32,37 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator';
-  import { Getter } from 'vuex-class';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Getter } from 'vuex-class';
 
-  @Component
-  export default class ViewContainer extends Vue {
+@Component
+export default class ViewContainer extends Vue {
 
-    @Prop({ type: Boolean, default: true })
-    public showHead!: boolean
+  @Prop({ type: Boolean, default: true })
+  public showHead!: boolean;
 
-    @Prop({
-      default: '',
-    })
-    public title!: string;
+  @Prop({
+    default: '',
+  })
+  public title!: string;
 
-    @Prop({
-      default: '',
-    })
-    public backUrl!: string;
+  @Prop({
+    default: '',
+  })
+  public backUrl!: string;
 
-    public get fromName() {
-      return this.$store.state.menu.fromName;
-    }
-
-    public onBack() {
-      this.$router.push({
-        name: !!this.backUrl ? this.backUrl : this.fromName,
-        params: this.$route.params,
-        query: this.$route.query,
-      });
-    }
+  public get fromName() {
+    return this.$store.state.menu.fromName;
   }
+
+  public onBack() {
+    this.$router.push({
+      name: !!this.backUrl ? this.backUrl : this.fromName,
+      params: this.$route.params,
+      query: this.$route.query,
+    });
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

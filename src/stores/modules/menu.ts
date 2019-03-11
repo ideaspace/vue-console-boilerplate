@@ -1,14 +1,15 @@
 import * as types from '../mutation-types';
-import {getMenuTree} from '@/apis/menu';
+import {Commit} from 'vuex';
+import {getMenuTree, MenuVO} from '@/apis/menu';
 
-interface MenuVO {
-  menuTree: any[];
+interface State {
+  menuTree: MenuVO[];
   toName?: string;
   fromName?: string;
   menuName?: string;
 }
 
-const state = {
+const state: State = {
   menuTree: [],
   toName: '',
   fromName: '',
@@ -16,7 +17,7 @@ const state = {
 };
 
 const actions = {
-  async createMenuData({commit}: any, data: MenuVO) {
+  async createMenuData({commit}: {commit: Commit}, data: MenuVO) {
     try {
       const r = await getMenuTree();
       if (r.data.code === 0) {
@@ -25,13 +26,13 @@ const actions = {
     } catch (e) {
     }
   },
-  deleteMenuData({commit}: any) {
+  deleteMenuData({commit}: {commit: Commit}) {
     commit(types.MENU_DATA_CREATE, null);
   },
 };
 
 const mutations = {
-  [types.MENU_DATA_CREATE](state: MenuVO, data: MenuVO) {
+  [types.MENU_DATA_CREATE](state: State, data: State) {
     if (data) {
       const {
         menuTree,
@@ -53,7 +54,7 @@ const mutations = {
 };
 
 const getters = {
-  menuTree: (state: MenuVO) => state.menuTree,
+  menuTree: (state: State) => state.menuTree,
 };
 
 export default {

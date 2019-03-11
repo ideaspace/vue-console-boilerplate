@@ -71,19 +71,19 @@ export default class ListView extends Vue {
     dataCluster: '',
   };
   public dialog = {
-    detail: false
-  }
+    detail: false,
+  };
   public loading: boolean = false;
   public alertList: ListVO[] = [];
   public itemData: ListVO = {};
   public ALERT_HISTORY_STATUS = ALERT_HISTORY_STATUS;
   public ALERT_HISTORY_STATUS_TEXT = ALERT_HISTORY_STATUS_TEXT;
   public ALERT_LEVEL_TEXT = ALERT_LEVEL_TEXT;
-  public onOpenDialog(row) {
+  public onOpenDialog(row: ListVO) {
     this.dialog.detail = true;
-    this.itemData = row
+    this.itemData = row;
   }
-  public onCloseDialog(row) {
+  public onCloseDialog() {
     this.dialog.detail = false;
   }
   public async getTableList() {

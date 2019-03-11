@@ -23,7 +23,7 @@ class CountedTo {
     this.callback = () => {}
   }
 
-  public startTo(endValue: number, fn: () => {}) {
+  public startTo(endValue: number, fn: Function) {
     this.options.endValue = endValue;
     if (this.options.startValue === this.options.endValue) { return this; }
     this.counting(this.startTime);
