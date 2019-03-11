@@ -9,9 +9,9 @@ class CountedTo {
   };
 
   private currentValue: number;
-  private options: any;
-  private startTime: number;
+  private readonly options: any;
   private readonly countDown: boolean;
+  private startTime: number;
   private callback: (arg?: any) => void;
 
   constructor(settings: object) {
