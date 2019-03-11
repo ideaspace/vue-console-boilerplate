@@ -94,7 +94,7 @@ export default class HeaderWrapper extends Vue {
     font-size: 0;
     .brand-img {
       display: inline-block;
-      background-image: url("./../../assets/ctyun_logo.svg");
+      background-image: url("../../assets/logo.svg");
       background-repeat: no-repeat;
       background-size: contain;
       width: 40px;

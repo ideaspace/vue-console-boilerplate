@@ -59,7 +59,7 @@
     width: 50px;
     height: 32px;
     margin-right: $base-ratio-px;
-    background-image: url('../../assets/ctyun_logo.svg');
+    background-image: url('../../assets/logo.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
