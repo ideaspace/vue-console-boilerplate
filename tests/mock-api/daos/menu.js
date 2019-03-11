@@ -87,7 +87,7 @@ module.exports = {
           menuIndex: 6,
           menuIcon: '',
           parMenuId: 104,
-          urlAddr: 'volume-snapshot'
+          urlAddr: 'page'
         }]
     },
     {

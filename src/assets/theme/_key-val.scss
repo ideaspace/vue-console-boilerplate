@@ -1,4 +1,8 @@
 .info-list {
+  display: inline-block;
+  & + & {
+    margin-left: $base-ratio-px * 2;
+  }
   &--key {
     font-size: 14px;
     line-height: 20px;
