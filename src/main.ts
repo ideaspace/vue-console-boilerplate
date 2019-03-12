@@ -4,13 +4,6 @@ import Bootstrap from './bootstrap';
 
 Vue.config.productionTip = false;
 
-// Bootstrap.router.addRoutes([
-//   {
-//     path: '*',
-//     redirect: '/404',
-//   },
-// ]);
-
 Vue.use(Bootstrap);
 
 new Vue({

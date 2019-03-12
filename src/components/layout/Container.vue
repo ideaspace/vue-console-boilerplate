@@ -57,7 +57,7 @@ export default class ViewContainer extends Vue {
 
   public onBack() {
     this.$router.push({
-      name: !!this.backUrl ? this.backUrl : this.fromName,
+      name: this.backUrl || this.fromName,
       params: this.$route.params,
       query: this.$route.query,
     });
