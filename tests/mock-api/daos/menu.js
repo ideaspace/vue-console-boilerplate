@@ -79,16 +79,27 @@ module.exports = {
       items: [
         {
           hasChildren: false,
-
           items: null,
           menuId: 133,
-          menuName: '基础',
+          menuName: '一级',
           menuLevel: 2,
           menuIndex: 6,
           menuIcon: '',
           parMenuId: 104,
-          urlAddr: 'page'
-        }]
+          urlAddr: 'base-detail'
+        },
+        {
+          hasChildren: false,
+          items: null,
+          menuId: 134,
+          menuName: '二级',
+          menuLevel: 2,
+          menuIndex: 7,
+          menuIcon: '',
+          parMenuId: 104,
+          urlAddr: 'inner-detail'
+        }
+      ]
     },
     {
       hasChildren: true,
@@ -132,7 +143,7 @@ module.exports = {
           menuIcon: '',
           parMenuId: 105,
           urlAddr: 'error-500'
-        },
+        }
       ]
     },
     {
