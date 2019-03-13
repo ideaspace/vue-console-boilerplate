@@ -1,5 +1,6 @@
 import {VueConstructor} from 'vue';
-import ViewContainer from './layout/Container.vue'
+import ViewContainer from './layout/Container.vue';
+
 interface CompsList {
   [key: string]: VueConstructor;
 }
