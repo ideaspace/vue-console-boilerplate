@@ -4,7 +4,6 @@ import Element from 'element-ui';
 import {VueConstructor} from 'vue';
 import {Route} from 'vue-router';
 import {Comps} from '@/components';
-import {Mixins} from '@/mixins';
 import router from './router';
 import store from './store';
 
@@ -24,12 +23,6 @@ class Bootstrap {
     for (const key in Comps) {
       if (Comps.hasOwnProperty(key)) {
         Vue.component(key, Comps[key]);
-      }
-    }
-
-    for (const key in Mixins) {
-      if (Mixins.hasOwnProperty(key)) {
-        Vue.mixin(Mixins[key]);
       }
     }
 
@@ -61,7 +54,7 @@ class Bootstrap {
         this.stores.dispatch('menu/createMenuData', {toName: to.name, fromName: from.name});
         next();
       } else {
-        this.stores.dispatch('menu/createMenuData', {toName: to.name, fromName: from.name});
+        this.stores.dispatch('menu/updateMenuData', {toName: to.name, fromName: from.name});
         next();
       }
     });
