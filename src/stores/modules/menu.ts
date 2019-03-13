@@ -26,6 +26,9 @@ const actions = {
     } catch (e) {
     }
   },
+  updateMenuData({commit}: {commit: Commit}, data: MenuVO) {
+    commit(types.MENU_DATA_CREATE, data);
+  },
   deleteMenuData({commit}: {commit: Commit}) {
     commit(types.MENU_DATA_CREATE, null);
   },
@@ -40,7 +43,9 @@ const mutations = {
         toName,
         fromName,
       } = data;
-      state.menuTree = menuTree;
+      if (!state.menuTree.length) {
+        state.menuTree = menuTree;
+      }
       state.toName = toName;
       state.fromName = fromName;
       state.menuName = menuName;
