@@ -3,7 +3,7 @@ import './assets/style.scss';
 import Element from 'element-ui';
 import {VueConstructor} from 'vue';
 import {Route} from 'vue-router';
-import {Comps} from '@/components';
+import Comps from './components';
 import router from './router';
 import store from './store';
 
