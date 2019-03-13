@@ -1,10 +1,12 @@
 import {VueConstructor} from 'vue';
-
+import ViewContainer from './layout/Container.vue'
 interface CompsList {
   [key: string]: VueConstructor;
 }
 
-const Comps: CompsList = {};
+const Comps: CompsList = {
+  ViewContainer
+};
 
 const requireComps = require.context('@/components', true, /\.vue$/);
 
