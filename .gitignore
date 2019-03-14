@@ -7,7 +7,6 @@ node_modules/
 
 # Dev/Build Artifacts
 /dist/
-/vue-cli-plugin-consoler/
 /tests/e2e/videos/
 /tests/e2e/screenshots/
 /tests/unit/coverage/

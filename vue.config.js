@@ -32,7 +32,14 @@ module.exports = {
       warnings: true,
       errors: true
     },
-    before: require('./tests/mock-api')
+    before: require('./tests/mock-api'),
+    proxy: {
+      '/api/business': {
+        ws: false,
+        target: 'http://192.168.90.98:8580',
+        changeOrigin: true
+      }
+    }
   },
   css: {
     loaderOptions: {
