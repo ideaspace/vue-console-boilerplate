@@ -14,26 +14,6 @@
     margin-top: 0;
     margin-bottom: 0;
   }
-  .el-input-group__prepend,
-  .el-input-group__append {
-    padding: 0 $base-ratio-px * 2;
-    height: 26px;
-    svg {
-      fill: #999;
-    }
-  }
-  .el-input-group--prepend {
-    .el-input__inner {
-      border-top-left-radius: 0 !important;
-      border-bottom-left-radius: 0 !important;
-    }
-  }
-  .el-input-group--append {
-    .el-input__inner {
-      border-top-right-radius: 0 !important;
-      border-bottom-right-radius: 0 !important;
-    }
-  }
   .el-input__inner {
     padding: 0 $base-ratio-px;
     border-radius: $border-radius;
@@ -61,6 +41,32 @@
     right: $base-ratio-px - 2;
     top: -$base-ratio-px - 2;
     color: $window-bg-color;
+  }
+}
+
+.el-input {
+  &-group__prepend,
+  &-group__append {
+    height: 26px;
+    svg {
+      fill: #999;
+    }
+  }
+  &-group--prepend {
+    .el-input__inner {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+  &-group--append {
+    .el-input__inner {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .el-button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 }
 
