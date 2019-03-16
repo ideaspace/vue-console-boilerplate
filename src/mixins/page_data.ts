@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
 interface PageVO {
   [key: string]: any;
@@ -6,7 +7,8 @@ interface PageVO {
   pageSize: number;
 }
 
-export class PageData extends Vue {
+@Component
+export default class PageData extends Vue {
   public page: PageVO = {
     pageNow: 1,
     pageSize: 10,
