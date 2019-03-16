@@ -12,7 +12,8 @@
     "new:module": "hygen new module --name",
     "new:dialog": "hygen new dialog --name",
     "new:comp": "hygen new comp --name",
-    "new:api": "hygen new api --name"
+    "new:api": "hygen new api --name",
+    "new:router": "hygen new router --name"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -35,7 +36,7 @@
     "@vue/cli-service": "^3.0.0",
     "babel-plugin-component": "^1.1.1",
     "cookie-parser": "^1.4.4",
-    "hygen": "^2.1.2",
+    "hygen": "^4.0.2",
     "jsonwebtoken": "^8.5.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",

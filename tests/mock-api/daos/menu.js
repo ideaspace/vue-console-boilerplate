@@ -65,6 +65,17 @@ module.exports = {
         parMenuId: 103,
         menuDesc: '查询表格',
         urlAddr: 'list-table-list'
+      },{
+        hasChildren: false,
+        items: null,
+        menuId: 125,
+        menuName: '表格树',
+        menuLevel: 2,
+        menuIndex: 4,
+        menuIcon: '',
+        parMenuId: 103,
+        menuDesc: '查询表格',
+        urlAddr: 'list-table-tree'
       }]
     },
     {
