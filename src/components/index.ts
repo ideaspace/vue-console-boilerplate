@@ -6,7 +6,7 @@ interface CompsList {
 }
 
 const Comps: CompsList = {
-  ViewContainer
+  ViewContainer,
 };
 
 const requireComps = require.context('@/components', true, /\.vue$/);

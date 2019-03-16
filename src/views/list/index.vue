@@ -63,13 +63,13 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue, Mixins} from 'vue-property-decorator';
+  import {Component, Mixins} from 'vue-property-decorator';
   import {ALERT_HISTORY_STATUS} from '@/dict-data';
   import {ALERT_HISTORY_STATUS_TEXT, ALERT_LEVEL_TEXT} from '@/dict-text';
   import HTTP_LIST, {ListVO} from '@/apis/list';
-  import DetailDialog from '@/views/list/dialogs/Detail.vue';
-  import {PageData} from '@/mixins/page_data';
-  import {DateFormat} from '@/mixins/date_format';
+  import DetailDialog from './dialogs/Detail.vue';
+  import PageData from '@/mixins/page_data';
+  import DateFormat from '@/mixins/date_format';
 
   @Component({
     name: 'ListView',

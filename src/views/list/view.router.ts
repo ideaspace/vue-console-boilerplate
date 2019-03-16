@@ -1,12 +1,13 @@
 export default [
   {
-    path: '/list',
-    name: 'list',
-    redirect: 'list-table-list',
+    path: 'list/table-tree',
+    name: 'list-table-tree',
+    component: () => import('./table-tree.vue'),
     meta: {
-      title: '查询表格',
+      title: 'list/table-tree',
     },
   },
+
   {
     path: '/list/table-list',
     name: 'list-table-list',

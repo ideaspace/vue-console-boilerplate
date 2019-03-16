@@ -31,7 +31,7 @@
         </div>
       </el-col>
     </el-row>
-    <h4 class="mt-8">监控项信息</h4>
+    <h4 class="mt-16">监控项信息</h4>
     <el-table :data="appItemList">
       <div class="empty" slot="empty">暂无数据</div>
       <el-table-column prop="applicationName" label="名称"></el-table-column>
