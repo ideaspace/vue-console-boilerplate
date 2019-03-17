@@ -12,6 +12,15 @@ module.exports = [
     validate: input => !!input,
   },
   {
+    type: 'checkbox',
+    name: 'choiceTheme',
+    message: '请选择主题:',
+    choices: [
+      { name: '默认', value: 'default' },
+      { name: '天翼云', value: 'yun' }
+    ]
+  },
+  {
     type: 'confirm',
     name: 'innerComp',
     message: '是否启用自带组件?',
@@ -25,6 +34,21 @@ module.exports = [
       { name: '计数器', value: 'count' }
     ],
     when: answers => answers.innerComp
+  },
+  {
+    type: 'confirm',
+    name: 'chart',
+    message: '是否启用可视化图表?',
+  },
+  {
+    type: 'list',
+    name: 'choiceChart',
+    message: '请选择需要的可视化图表:',
+    choices: [
+      { name: 'G2', value: 'g2' },
+      { name: 'EChart', value: 'echart' }
+    ],
+    when: answers => answers.chart
   },
   {
     type: 'confirm',
