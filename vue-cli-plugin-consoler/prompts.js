@@ -12,7 +12,7 @@ module.exports = [
     validate: input => !!input,
   },
   {
-    type: 'checkbox',
+    type: 'list',
     name: 'choiceTheme',
     message: '请选择主题:',
     choices: [
