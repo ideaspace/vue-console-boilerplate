@@ -23,16 +23,23 @@ module.exports = (api, options, rootOptions) => {
       "@vue/cli-service": "^3.0.0",
       "babel-plugin-component": "^1.1.1",
       "cookie-parser": "^1.4.4",
-      "hygen": "^2.1.2",
+      "hygen": "^4.0.2",
       "jsonwebtoken": "^8.5.0",
       "node-sass": "^4.9.0",
       "sass-loader": "^7.1.0",
       "svg-sprite-loader": "^4.1.3",
       "typescript": "^3.0.0",
       "vue-template-compiler": "^2.5.21"
-    },
+    }
   })
 
+  // 选择主题
+  if (options.choiceTheme) {}
+
+  // 帮助文档链接
+  if (options.helpLink) {}
+
+  // 选择组件
   if (options.choiceComp && options.choiceComp.length) {
     options.choiceComp.forEach(comp => {
       const _files = globby.sync(['**/*'], {
@@ -48,13 +55,28 @@ module.exports = (api, options, rootOptions) => {
     })
   }
 
+  // 选择可视化图表
+  if (options.choiceChart) {
+    options.choiceChart === 'g2' ? api.extendPackage({
+      "@antv/g2": "^3.4.8"
+    }) : api.extendPackage({
+      "echarts": "^4.1.0"
+    })
+  }
+
   api.render('./skeleton/default', {
-    ...options,
+    ...options
+  })
+
+  api.render('./skeleton/tmpl', {
+    ...options
   })
 
   api.render({
     './src/app.config.ts': './skeleton/config/app.js'
   })
 
-  api.onCreateComplete(() => {})
+  api.onCreateComplete(() => {
+    api.exitLog('hello world')
+  })
 }

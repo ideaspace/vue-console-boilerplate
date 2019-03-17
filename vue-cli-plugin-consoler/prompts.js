@@ -22,6 +22,11 @@ module.exports = [
   },
   {
     type: 'confirm',
+    name: 'helpLink',
+    message: '是否生成帮助文档链接?',
+  },
+  {
+    type: 'confirm',
     name: 'innerComp',
     message: '是否启用自带组件?',
   },
