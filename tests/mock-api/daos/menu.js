@@ -113,8 +113,19 @@ module.exports = {
       ]
     },
     {
-      hasChildren: true,
+      hasChildren: false,
+      items: null,
       menuId: 105,
+      menuName: '搜索',
+      menuLevel: 0,
+      menuIndex: 1,
+      menuIcon: 'search',
+      parMenuId: -1,
+      urlAddr: 'search'
+    },
+    {
+      hasChildren: true,
+      menuId: 106,
       menuName: '异常',
       menuLevel: 0,
       menuIndex: 5,
@@ -159,7 +170,7 @@ module.exports = {
     },
     {
       hasChildren: true,
-      menuId: 106,
+      menuId: 107,
       menuName: '个人',
       menuLevel: 0,
       menuIndex: 5,

@@ -53,3 +53,22 @@
     }
   }
 }
+
+.el-input-group__prepend,
+.el-input-group__append {
+  .el-button {
+    margin: 0 -21px;
+    height: 28px;
+    &--default {
+      &.is-disabled {
+        background-color: $button-default-disable-bg-color;
+        color: $button-default-disable-text-color;
+        border-color: $button-default-disable-border-color;
+        &:hover,
+        &:focus {
+          background-color: $button-default-disable-bg-color;
+        }
+      }
+    }
+  }
+}
