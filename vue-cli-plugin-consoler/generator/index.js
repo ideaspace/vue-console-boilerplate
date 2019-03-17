@@ -72,7 +72,7 @@ module.exports = (api, options, rootOptions) => {
   }
 
   api.render({
-    './src/app.config.ts': './skeleton/config/app.js'
+    './src/app.config.ts': './skeleton/config/app.ts'
   })
 
   api.onCreateComplete(() => {
