@@ -1,9 +1,9 @@
 ---
-to: "src/views/<%= name.includes('/') ? h.inflection.dasherize(name.slice(0, name.indexOf('/'))) + '/dialogs/' + h.changeCase.pascal(name.slice(name.indexOf('/') + 1)) : h.inflection.dasherize(name) + '/dialogs/' + h.changeCase.pascal(name) %>.vue"
+to: "src/views/<%%= name.includes('/') ? h.inflection.dasherize(name.slice(0, name.indexOf('/'))) + '/dialogs/' + h.changeCase.pascal(name.slice(name.indexOf('/') + 1)) : h.inflection.dasherize(name) + '/dialogs/' + h.changeCase.pascal(name) %%>.vue"
 ---
-<%
+<%%
   const compName = h.changeCase.pascal(name.slice(name.indexOf('/') + 1))
-%><template>
+%%><template>
   <el-dialog title="" :visible="dialogVisible" @close="onClose">
     <div slot="footer" class="dialog-footer">
       <el-button @click="onClose">关闭</el-button>
@@ -15,9 +15,9 @@ to: "src/views/<%= name.includes('/') ? h.inflection.dasherize(name.slice(0, nam
   import {Component, Prop, Vue} from 'vue-property-decorator';
 
   @Component({
-    name: '<%= compName %>Dialog'
+    name: '<%%= compName %%>Dialog'
   })
-  export default class <%= compName %>Dialog extends Vue {
+  export default class <%%= compName %%>Dialog extends Vue {
     public dialogVisible: boolean = true;
     public onConfirm () {
       this.onClose('confirm');

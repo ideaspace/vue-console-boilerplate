@@ -1,5 +1,5 @@
 ---
-to: src/views/<%= h.inflection.dasherize(name.replace(/-/g, '_')) %>/index.vue
+to: src/views/<%%= h.inflection.dasherize(name.replace(/-/g, '_')) %%>/index.vue
 ---
 <template>
   <view-container title="页面标题">
@@ -9,9 +9,9 @@ to: src/views/<%= h.inflection.dasherize(name.replace(/-/g, '_')) %>/index.vue
   import {Component, Vue} from 'vue-property-decorator';
 
   @Component({
-    name: '<%= h.changeCase.pascal(name) %>View',
+    name: '<%%= h.changeCase.pascal(name) %%>View',
   })
-  export default class <%= h.changeCase.pascal(name) %>View extends Vue {}
+  export default class <%%= h.changeCase.pascal(name) %%>View extends Vue {}
 </script>
 <style lang="scss" scoped>
 </style>
