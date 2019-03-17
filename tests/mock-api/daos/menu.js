@@ -187,7 +187,7 @@ module.exports = {
           menuIndex: 1,
           menuIcon: '',
           parMenuId: 106,
-          urlAddr: 'user-modify-password'
+          urlAddr: 'user-account-password'
         }
       ]
     }],
