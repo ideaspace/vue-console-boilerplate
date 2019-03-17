@@ -10,7 +10,7 @@
           <div class="header-cont--user-meta">
             <div class="header-cont--user-meta-avatar"></div>
             <div class="header-cont--user-meta-name">
-              <el-dropdown @command="onMenuSelect">
+              <el-dropdown @command="val => onMenuSelect('action', val)">
               <span class="el-dropdown-link">
                 <span>{{username}}</span>
                 <i class="el-icon-arrow-down el-icon--right"></i>
@@ -23,11 +23,20 @@
             </div>
           </div>
         </div>
+        <%_ if (options.helpLink) { _%>
         <div class="header-cont--panel">
-          <span class="header-cont--panel-help">
-            <el-icon name="question"></el-icon>
-          </span>
+          <el-dropdown @command="val => onMenuSelect('help', val)">
+            <span class="header-cont--panel-help">
+              <el-icon name="question"></el-icon>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item
+                command=""
+              >帮助文档</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </div>
+        <%_ } _%>
       </div>
     </div>
   </div>
@@ -42,15 +51,22 @@ export default class HeaderWrapper extends Vue {
   public get username() {
     return this.$store.state.user.username;
   }
-  public onMenuSelect(val: string) {
-    if (val === 'logout') {
-      this.userLogout();
+  public onMenuSelect(type:string, val: string) {
+    if (type === 'action') {
+      if (val === 'logout') {
+        this.userLogout();
+      }
+      if (val === 'changePwd') {
+        this.$router.push({
+          name: 'user-modify-password'
+        });
+      }
     }
-    if (val === 'changePwd') {
-      this.$router.push({
-        name: 'user-modify-password'
-      });
+    <%_ if (options.helpLink) { _%>
+    if (type === "help") {
+      window.open(val, "_blank");
     }
+    <%_ } _%>
   }
   public async userLogout() {
     try {

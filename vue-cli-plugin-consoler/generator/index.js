@@ -33,11 +33,24 @@ module.exports = (api, options, rootOptions) => {
     }
   })
 
+  api.render('./skeleton/default', {
+    ...options
+  })
+
+  api.render('./skeleton/tmpl', {
+    ...options
+  })
+
+
   // 选择主题
   if (options.choiceTheme) {}
 
   // 帮助文档链接
-  if (options.helpLink) {}
+  if (options.helpLink) {
+    api.render({
+      './src/components/layout/Header.vue': './skeleton/default/src/components/layout/Header.vue'
+    })
+  }
 
   // 选择组件
   if (options.choiceComp && options.choiceComp.length) {
@@ -63,14 +76,6 @@ module.exports = (api, options, rootOptions) => {
       "echarts": "^4.1.0"
     })
   }
-
-  api.render('./skeleton/default', {
-    ...options
-  })
-
-  api.render('./skeleton/tmpl', {
-    ...options
-  })
 
   api.render({
     './src/app.config.ts': './skeleton/config/app.js'
