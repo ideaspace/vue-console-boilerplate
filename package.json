@@ -42,6 +42,7 @@
     "sass-loader": "^7.1.0",
     "svg-sprite-loader": "^4.1.3",
     "typescript": "^3.0.0",
+    "vue-cli-plugin-consoler": "file:vue-cli-plugin-consoler",
     "vue-template-compiler": "^2.5.21"
   }
 }
