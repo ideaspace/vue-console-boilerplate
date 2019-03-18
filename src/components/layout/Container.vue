@@ -11,7 +11,7 @@
         <!--</el-breadcrumb-item>-->
         <!--</el-breadcrumb>-->
         <!--</div>-->
-        <div class="view-head--back" v-if="backUrl">
+        <div class="view-head--back" v-if="hasUrl">
           <el-button type="text" icon="el-icon-back" @click="onBack"></el-button>
         </div>
         <div class="view-head--info">
@@ -46,13 +46,16 @@ export default class ViewContainer extends Vue {
   })
   public title!: string;
 
-  @Prop({
-    default: '',
-  })
+  @Prop(String)
   public backUrl!: string;
 
   public get fromName() {
     return this.$store.state.menu.fromName;
+  }
+
+  public get hasUrl() {
+    if (this.backUrl === '' && this.fromName === '') return false;
+    return this.backUrl !== undefined;
   }
 
   public onBack() {
