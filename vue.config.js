@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   configureWebpack: {
@@ -32,7 +32,14 @@ module.exports = {
       warnings: true,
       errors: true
     },
-    before: require('./tests/mock-api')
+      before: require('./tests/mock-api'),
+      proxy: {
+        '/api': {
+          ws: false,
+          target: 'dadsad',
+          changeOrigin: true
+        }
+      }
   },
   css: {
     loaderOptions: {

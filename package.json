@@ -7,13 +7,13 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "new": "hygen new",
-    "new:view": "hygen new view --name",
-    "new:viewr": "hygen new viewr --name",
-    "new:module": "hygen new module --name",
-    "new:dialog": "hygen new dialog --name",
-    "new:comp": "hygen new comp --name",
     "new:api": "hygen new api --name",
-    "new:router": "hygen new router --name"
+    "new:comp": "hygen new comp --name",
+    "new:dialog": "hygen new dialog --name",
+    "new:module": "hygen new module --name",
+    "new:router": "hygen new router --name",
+    "new:view": "hygen new view --name",
+    "new:viewr": "hygen new viewr --name"
   },
   "dependencies": {
     "axios": "^0.18.0",

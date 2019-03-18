@@ -32,17 +32,16 @@ module.exports = {
       warnings: true,
       errors: true
     },
-    <%_ if (options.proxy) {_%>
-      proxy: {
-        '/api': {
-          ws: false,
-            target: '<%=options.proxy%>',
-            changeOrigin: true
-        }
+    before: require('./tests/mock-api'),
+  <%_ if (options.proxy) {_%>
+    proxy: {
+      '/api': {
+        ws: false,
+        target: '<%=options.proxy%>',
+        changeOrigin: true
       }
-    <%_ } else {_%>
-      before: require('./tests/mock-api'),
-    <%_ } _%>
+    }
+  <%_ }_%>
   },
   css: {
     loaderOptions: {
