@@ -54,7 +54,9 @@ export default class ViewContainer extends Vue {
   }
 
   public get hasUrl() {
-    if (this.backUrl === '' && this.fromName === '') return false;
+    if (this.backUrl === '' && this.fromName === '') {
+      return false;
+    }
     return this.backUrl !== undefined;
   }
 
