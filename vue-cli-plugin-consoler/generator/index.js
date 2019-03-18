@@ -87,10 +87,9 @@ module.exports = (api, options, rootOptions) => {
   })
 
   api.render({
-    './vue.config.js': './config/vue.config.ts'
+    './vue.config.js': './config/vue.ts'
   })
 
   api.onCreateComplete(() => {
-    api.exitLog('hello world')
   })
 }
