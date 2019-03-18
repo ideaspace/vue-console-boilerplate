@@ -8,6 +8,10 @@ module.exports = (api, options, rootOptions) => {
       "element-ui": "^2.5.4",
       "js-cookie": "^2.2.0",
       "lodash": "^4.17.11",
+      "vue-class-component": "^6.0.0",
+      "vue-property-decorator": "^7.0.0",
+      "vue-router": "^3.0.1",
+      "vuex": "^3.0.1",
       "vuex-class": "^0.3.1"
     },
     devDependencies: {
@@ -23,7 +27,6 @@ module.exports = (api, options, rootOptions) => {
 
   api.extendPackage({
     scripts: {
-      "new": "hygen new",
       "new:view": "hygen new view --name",
       "new:viewr": "hygen new viewr --name",
       "new:module": "hygen new module --name",
