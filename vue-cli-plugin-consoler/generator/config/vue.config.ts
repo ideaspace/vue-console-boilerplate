@@ -37,7 +37,7 @@ module.exports = {
     proxy: {
       '/api': {
         ws: false,
-        target: '<%=options.proxy%>',
+        target: 'http://localhost:8080', // 默认值，需修改为正确远端地址
         changeOrigin: true
       }
     }
