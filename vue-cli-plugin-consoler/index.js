@@ -1,1 +1,3 @@
-module.exports = (api) => {}
+module.exports = (api) => {
+  console.log(api)
+}

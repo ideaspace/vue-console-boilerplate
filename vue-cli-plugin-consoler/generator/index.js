@@ -29,9 +29,6 @@ module.exports = (api, options, rootOptions) => {
 
   api.render('./mock')
 
-  api.render({
-    './src/app.config.ts': './skeleton/config/app.ts'
-  })
 
   // 选择主题
   if (options.choiceTheme) {}
@@ -71,6 +68,10 @@ module.exports = (api, options, rootOptions) => {
       }
     })
   }
+
+  api.render({
+    './src/app.config.ts': './skeleton/config/app.ts'
+  })
 
   api.onCreateComplete(() => {
     api.exitLog('hello world')
