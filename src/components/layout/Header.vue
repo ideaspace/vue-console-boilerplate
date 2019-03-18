@@ -43,7 +43,7 @@
 
   @Component
   export default class HeaderWrapper extends Vue {
-    public title = require('./../../app.config').title;
+    public title = require('./../../app.config.ts').title;
 
     public get username() {
       return this.$store.state.user.username;
