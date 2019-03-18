@@ -34,15 +34,6 @@ module.exports = (api, options, rootOptions) => {
     }
   })
 
-  api.render('./skeleton/default', {
-    ...options
-  })
-
-  api.render('./tmpl')
-
-  api.render('./mock')
-
-
   // 选择主题
   if (options.choiceTheme) {}
 
@@ -67,6 +58,7 @@ module.exports = (api, options, rootOptions) => {
         }
       }
     })
+    options.table = options.choiceComp.includes('table')
   }
 
   // 选择可视化图表
@@ -81,6 +73,18 @@ module.exports = (api, options, rootOptions) => {
       }
     })
   }
+
+  api.render('./skeleton/default', {
+    ...options
+  })
+
+  api.render('./tmpl', {
+    ...options
+  })
+
+  api.render('./mock', {
+    ...options
+  })
 
   api.render({
     './src/app.config.ts': './config/app.ts'
