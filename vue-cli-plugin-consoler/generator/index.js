@@ -1,6 +1,10 @@
+const fs = require('fs')
 const path = require('path')
 const globby = require('globby')
 module.exports = (api, options, rootOptions) => {
+
+  const helper = require('./../helper')(api)
+
   api.extendPackage({
     dependencies: {
       "axios": "^0.18.0",
@@ -8,11 +12,8 @@ module.exports = (api, options, rootOptions) => {
       "element-ui": "^2.5.4",
       "js-cookie": "^2.2.0",
       "lodash": "^4.17.11",
-      "vue-class-component": "^6.0.0",
-      "vue-property-decorator": "^7.0.0",
       "vue-router": "^3.0.1",
-      "vuex": "^3.0.1",
-      "vuex-class": "^0.3.1"
+      "vuex": "^3.0.1"
     },
     devDependencies: {
       "@types/js-cookie": "^2.2.1",
@@ -20,10 +21,25 @@ module.exports = (api, options, rootOptions) => {
       "cookie-parser": "^1.4.4",
       "hygen": "^4.0.2",
       "jsonwebtoken": "^8.5.0",
-      "svg-sprite-loader": "^4.1.3",
-      "typescript": "^3.0.0",
+      "node-sass": "^4.9.0",
+      "sass-loader": "^7.1.0",
+      "svg-sprite-loader": "^4.1.3"
     }
   })
+
+  if (!helper.isUsedTs()) {
+    api.extendPackage({
+      dependencies: {
+        "vue-class-component": "^6.0.0",
+        "vue-property-decorator": "^7.0.0",
+        "vuex-class": "^0.3.1"
+      },
+      devDependencies: {
+        "@vue/cli-plugin-typescript": "^3.0.0",
+        "typescript": "^3.0.0"
+      }
+    })
+  }
 
   api.extendPackage({
     scripts: {
@@ -38,7 +54,9 @@ module.exports = (api, options, rootOptions) => {
   })
 
   // 选择主题
-  if (options.choiceTheme) {}
+  if (options.choiceTheme) {
+    // Todo: add ctyun theme
+  }
 
   // 帮助文档链接
   if (options.helpLink) {
@@ -90,13 +108,24 @@ module.exports = (api, options, rootOptions) => {
   })
 
   api.render({
-    './src/app.config.ts': './config/app.ts'
-  })
-
-  api.render({
-    './vue.config.js': './config/vue.ts'
+    './src/app.config.ts': './config/app.ts',
+    './vue.config.js': './config/vue.ts',
+    './tsconfig.json': './config/tsconfig.json',
+    './tslint.json': './config/tslint.json'
   })
 
   api.onCreateComplete(() => {
+    const srcPath = path.resolve('src')
+    const viewPath = path.resolve('src/views')
+    fs.readdirSync(srcPath).forEach(file => {
+      if (/\.js$/.test(file)) {
+        fs.unlinkSync(`${srcPath}/${file}`)
+      }
+    })
+    fs.readdirSync(viewPath).forEach(file => {
+      if (/\.vue$/.test(file)) {
+        fs.unlinkSync(`${viewPath}/${file}`)
+      }
+    })
   })
 }

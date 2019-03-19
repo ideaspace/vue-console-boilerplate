@@ -43,7 +43,7 @@ module.exports = [
   {
     type: 'confirm',
     name: 'chart',
-    message: '是否启用可视化图表?',
+    message: '是否引入可视化图表?',
   },
   {
     type: 'list',
