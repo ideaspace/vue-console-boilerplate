@@ -6,7 +6,7 @@ Thumbs.db
 node_modules/
 
 # Dev/Build Artifacts
-/vue-cli-plugin-consoler
+/_templates
 /dist/
 /tests/e2e/videos/
 /tests/e2e/screenshots/
