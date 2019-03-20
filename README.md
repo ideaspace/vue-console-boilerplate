@@ -36,9 +36,6 @@ npm run new:module test     => @/views/test/test.module.ts
 npm run new:api test        => @/apis/test.ts
 ```
 
-**反向代理**
-
-
 **编译文件**
 ``` bash
 npm run build
